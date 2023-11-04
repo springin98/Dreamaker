@@ -13,13 +13,22 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "baseUrl": ".", //절대경로
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/assets/*": ["./src/app/assets/*"],
+      "@/components/*": ["./src/app/components/*"],
+      "@/store/*": ["./src/app/store/*"],
+      "@/styles/*": ["./src/app/styles/*"],
+      "@/types/*": ["./src/app/types/*"],
+      "@/utils/*": ["./src/app/utils/*"],
+      "@/public/fonts/*": ["./public/fonts/*"],
+      "@/public/images/*": ["./public/images/*"],
+      "@/public/svgs/*": ["./public/svgs/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
