@@ -1,27 +1,21 @@
 'use client';
 
-import { atom, useAtom } from 'jotai';
-import { atomsWithQuery } from 'jotai-tanstack-query';
+import SizeBtn from '@/components/main/buttons/SizeBtn';
+import NumBtn from '@/components/main/buttons/NumBtn';
+import SearchBtn from '@/components/main/buttons/SearchBtn';
+import Images from '@/components/main/Images';
+import SearchInput from '@/components/main/buttons/SearchInput';
+
 export default function Body() {
-  const idAtom = atom(1);
-  const [userAtom] = atomsWithQuery((get) => ({
-    queryKey: ['users', get(idAtom)],
-    queryFn: async ({ queryKey: [, id] }) => {
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${id}`
-      );
-      return res.json();
-    },
-  }));
-
-  const UserData = () => {
-    const [data] = useAtom(userAtom);
-    return <div>{JSON.stringify(data)}</div>;
-  };
-
   return (
     <div>
-      <UserData />
+      <div>
+        <SearchInput />
+        <SearchBtn />
+      </div>
+      <SizeBtn />
+      <NumBtn />
+      <Images />
     </div>
   );
 }
