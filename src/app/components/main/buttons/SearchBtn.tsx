@@ -1,10 +1,7 @@
-import Image from 'next/image';
 import { useAtom } from 'jotai';
 import OpenAI from 'openai';
 
 import { imageAtom } from '@/utils/main/imageAtom';
-import { useQuery } from '@tanstack/react-query';
-import Loading from '@/components/common/Loading';
 
 export default function SearchBtn() {
   const [image, setImage] = useAtom(imageAtom);
@@ -15,12 +12,18 @@ export default function SearchBtn() {
       dangerouslyAllowBrowser: true,
     });
 
-    const response = (await openai.images.generate({
+    let responseObj: responseObjType = {
       prompt: value,
       n: image.n,
       size: image.size,
       response_format: image.response_format,
-    })) as any;
+    };
+
+    if (image.model === 3) {
+      responseObj.model = 'dall-e-3';
+    }
+
+    const response = (await openai.images.generate(responseObj)) as any;
 
     if (response.error) {
       alert(response.error.message);
@@ -42,30 +45,17 @@ export default function SearchBtn() {
     }
   };
 
-  //react-query 사용한 api 호출 : <Images /> 로 계속 호출되어 사용 안 함
-  function Images() {
-    const { isPending, error, data } = useQuery({
-      queryKey: ['images'],
-      queryFn: () => getImage(image.prompt),
-    });
-
-    if (isPending) return <Loading />;
-
-    if (error) {
-      alert(data.error.message);
-      return <p>Error!</p>;
-    }
-
-    return (
-      <div>
-        <Image src={data.data[0].url} alt={`created: ${data.created}`} />
-      </div>
-    );
-  }
-
   return (
     <div>
       <button onClick={() => onClick()}>검색</button>
     </div>
   );
+}
+
+interface responseObjType {
+  prompt: string;
+  n: number;
+  size: '1024x1024' | '512x512' | '256x256';
+  response_format: 'url';
+  model?: 'dall-e-3';
 }

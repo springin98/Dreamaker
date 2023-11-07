@@ -18,7 +18,7 @@
     "jotai-immer": "^0.2.0",
     "jotai-tanstack-query": "^0.7.2",
     "next": "14.0.1",
-    "openai": "^4.15.0",
+    "openai": "^4.16.1",
     "react": "^18",
     "react-dom": "^18",
     "styled-components": "^6.1.0"

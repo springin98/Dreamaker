@@ -5,6 +5,7 @@ import NumBtn from '@/components/main/buttons/NumBtn';
 import SearchBtn from '@/components/main/buttons/SearchBtn';
 import Images from '@/components/main/Images';
 import SearchInput from '@/components/main/buttons/SearchInput';
+import ModelBtn from '@/components/main/buttons/ModelBtn';
 
 export default function Body() {
   return (
@@ -13,6 +14,7 @@ export default function Body() {
         <SearchInput />
         <SearchBtn />
       </div>
+      <ModelBtn />
       <SizeBtn />
       <NumBtn />
       <Images />
