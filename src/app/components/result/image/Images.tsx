@@ -12,11 +12,10 @@ export default function Images() {
   return (
     <div>
       {image.response.data.map((data: getImageType, index: number) => (
-        <div>
+        <div key={index}>
           <Image
             src={data.url}
             alt={`created : ${image.response.created}`}
-            key={index}
             width={image.showSize}
             height={image.showSize}
           />

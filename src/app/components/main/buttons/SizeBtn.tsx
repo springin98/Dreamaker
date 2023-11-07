@@ -12,6 +12,7 @@ export default function SizeBtn() {
     setImage((draft) => {
       draft.size = '1024x1024';
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [image.model]);
 
   const onChangeSize = (size: number) => {

@@ -11,6 +11,7 @@ export default function NumBtn() {
     setImage((draft) => {
       draft.n = 1;
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [image.model]);
 
   return (
