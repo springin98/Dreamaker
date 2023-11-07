@@ -1,9 +1,11 @@
 import { useAtom } from 'jotai';
 import OpenAI from 'openai';
 
-import { imageAtom } from '@/utils/main/imageAtom';
+import { imageAtom } from '@/store/main/imageAtom';
+import { useRouter } from 'next/navigation';
 
 export default function SearchBtn() {
+  const router = useRouter();
   const [image, setImage] = useAtom(imageAtom);
 
   async function getImage(value: string) {
@@ -32,6 +34,7 @@ export default function SearchBtn() {
       setImage((draft) => {
         draft.response = response;
       });
+      router.push('/result');
     }
     return response;
   }

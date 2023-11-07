@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 
-import { imageAtom } from '@/utils/main/imageAtom';
+import { imageAtom } from '@/store/main/imageAtom';
 import { useEffect } from 'react';
 
 export default function NumBtn() {

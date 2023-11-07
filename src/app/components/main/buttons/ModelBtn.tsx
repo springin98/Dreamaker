@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 
-import { imageAtom } from '@/utils/main/imageAtom';
+import { imageAtom } from '@/store/main/imageAtom';
 
 export default function ModelBtn() {
   const [, setImage] = useAtom(imageAtom);

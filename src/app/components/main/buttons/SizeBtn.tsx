@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai';
 
-import { imageAtom } from '@/utils/main/imageAtom';
+import { imageAtom } from '@/store/main/imageAtom';
 import { useEffect } from 'react';
 
 export default function SizeBtn() {
@@ -14,27 +14,33 @@ export default function SizeBtn() {
     });
   }, [image.model]);
 
-  const onChangeSize = (size: string) => {
+  const onChangeSize = (size: number) => {
+    if (size !== 1024 && size !== 512 && size !== 256) return;
+
     setImage((draft) => {
-      if (size === '1024x1024' || size === '512x512' || size === '256x256')
-        draft.size = size;
+      switch (size) {
+        case 1024:
+          draft.size = '1024x1024';
+          break;
+        case 512:
+          draft.size = '512x512';
+          break;
+        case 256:
+          draft.size = '256x256';
+          break;
+      }
+      draft.showSize = size;
     });
   };
 
   return (
     <div>
       <span>화질 선택</span>
-      <button onClick={() => onChangeSize('1024x1024')}>1024x1024</button>
-      <button
-        onClick={() => onChangeSize('512x512')}
-        disabled={image.model === 3}
-      >
+      <button onClick={() => onChangeSize(1024)}>1024x1024</button>
+      <button onClick={() => onChangeSize(512)} disabled={image.model === 3}>
         512x512
       </button>
-      <button
-        onClick={() => onChangeSize('256x256')}
-        disabled={image.model === 3}
-      >
+      <button onClick={() => onChangeSize(256)} disabled={image.model === 3}>
         256x256
       </button>
     </div>
