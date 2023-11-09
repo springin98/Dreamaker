@@ -17,7 +17,6 @@ export default function Body() {
       <ModelBtn />
       <SizeBtn />
       <NumBtn />
-      <Images />
     </div>
   );
 }

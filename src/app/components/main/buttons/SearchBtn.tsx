@@ -1,8 +1,8 @@
+import { useRouter } from 'next/navigation';
 import { useAtom } from 'jotai';
 import OpenAI from 'openai';
 
 import { imageAtom } from '@/store/main/imageAtom';
-import { useRouter } from 'next/navigation';
 
 export default function SearchBtn() {
   const router = useRouter();
@@ -34,13 +34,16 @@ export default function SearchBtn() {
       setImage((draft) => {
         draft.response = response;
       });
-      router.push('/result');
+      router.push(
+        `/result?created=${response.created}&img=${encodeURIComponent(
+          JSON.stringify(response.data)
+        )}&showSize=${image.showSize}`
+      );
     }
-    return response;
   }
 
   const onClick = () => {
-    if (image.prompt.length < 5) {
+    if (image.prompt.length < 1) {
       alert('검색할 키워드를 자세히 입력해주세요.');
       return;
     } else {

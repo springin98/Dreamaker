@@ -1,18 +1,20 @@
 'use client';
 import Images from '@/components/result/image/Images';
-import { useAtomValue } from 'jotai';
+import { useSearchParams } from 'next/navigation';
 
-import { imageAtom } from '@/store/main/imageAtom';
-import { useEffect } from 'react';
 export default function Page() {
-  const image = useAtomValue(imageAtom);
-  useEffect(() => {
-    console.log(image.response);
-  }, [image]);
+  const searchParams = useSearchParams();
+  const created = searchParams.get('created');
+  const img = searchParams.get('img');
+  const showSize = Number(searchParams.get('showSize'));
 
-  return (
+  return created &&
+    img &&
+    (showSize === 1024 || showSize === 512 || showSize === 256) ? (
     <div>
-      <Images />
+      <Images created={created} img={JSON.parse(img)} showSize={showSize} />
     </div>
+  ) : (
+    <div>Error</div>
   );
 }
