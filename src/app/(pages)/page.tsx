@@ -31,6 +31,7 @@ export default function Home() {
       model: 3,
       style: 'none',
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
