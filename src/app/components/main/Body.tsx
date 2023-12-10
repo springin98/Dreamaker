@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import styles from '@/styles/main/main.body.module.scss';
 
-import logo from '@/public/svgs/main/logo.svg';
+import logo from '@/public/svgs/common/logo.svg';
 
 import SearchBtn from '@/components/main/buttons/SearchBtn';
 import SearchInput from '@/components/main/SearchInput';
@@ -17,6 +17,7 @@ export default function Body() {
   const [isModal, setIsModal] = useState<boolean>(false);
   const [isAlert, setIsAlert] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [alertText, setAlertText] = useState<string>('');
 
   return (
     <div className={styles.body}>
@@ -32,6 +33,7 @@ export default function Body() {
               setIsModal={setIsModal}
               setIsAlert={setIsAlert}
               setIsLoading={setIsLoading}
+              setAlertText={setAlertText}
             />
           </div>
           <div className={styles.modalWrap}>
@@ -39,12 +41,7 @@ export default function Body() {
           </div>
         </div>
       </div>
-      {isAlert && (
-        <Alert
-          text={`보안 정책을 위배했습니다.\n다시 입력해주세요.`}
-          setIsAlert={setIsAlert}
-        />
-      )}
+      {isAlert && <Alert text={alertText} setIsAlert={setIsAlert} />}
       {isLoading && <Loading />}
     </div>
   );

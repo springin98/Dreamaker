@@ -1,0 +1,15 @@
+.body {
+  @include body();
+}
+
+.imagesWrap {
+  margin: 24px auto;
+  min-width: 1024px;
+  flex: 1;
+  .imageWrap {
+    width: 100%;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+}

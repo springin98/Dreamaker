@@ -2,6 +2,8 @@ import { useRouter } from 'next/navigation';
 import { useAtom } from 'jotai';
 import OpenAI from 'openai';
 
+import styles from '@/styles/main/main.button.module.scss';
+
 import { imageAtom } from '@/store/main/imageAtom';
 import { InputStyle } from './StyleBtn';
 
@@ -9,6 +11,7 @@ export default function SearchBtn({
   setIsModal,
   setIsAlert,
   setIsLoading,
+  setAlertText,
 }: SearchBtnProps) {
   const router = useRouter();
   const [image, setImage] = useAtom(imageAtom);
@@ -45,21 +48,25 @@ export default function SearchBtn({
         });
         router.push(
           `/result?prompt=${encodeURIComponent(
-            JSON.stringify(responseObj.prompt)
+            JSON.stringify(image.prompt)
           )}&created=${response.created}&img=${encodeURIComponent(
             JSON.stringify(response.data)
-          )}&showSize=${image.showSize}`
+          )}&showSize=${image.showSize}&model=${image.model}&style=${
+            image.style
+          }`
         );
       }
     } catch (error) {
       setIsLoading(false);
+      setAlertText(`보안 정책을 위배했습니다.\n다시 입력해주세요.`);
       setIsAlert(true);
     }
   }
 
   const onClick = () => {
     if (image.prompt.length < 1) {
-      alert('검색할 키워드를 자세히 입력해주세요.');
+      setAlertText('검색할 키워드를 자세히 입력해주세요.');
+      setIsAlert(true);
       return;
     } else {
       getImage(image.prompt);
@@ -67,10 +74,7 @@ export default function SearchBtn({
   };
 
   return (
-    <button
-      onClick={() => onClick()}
-      className="rounded border-2 border-purple300 bg-purple300 flex items-center text-white flex-1 ml-8 justify-center text-2xl"
-    >
+    <button onClick={() => onClick()} className={styles.searchBtn}>
       검색
     </button>
   );
@@ -88,4 +92,5 @@ interface SearchBtnProps {
   setIsModal: React.Dispatch<React.SetStateAction<boolean>>;
   setIsAlert: React.Dispatch<React.SetStateAction<boolean>>;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setAlertText: React.Dispatch<React.SetStateAction<string>>;
 }

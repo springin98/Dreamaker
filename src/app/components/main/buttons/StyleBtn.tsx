@@ -47,7 +47,7 @@ export default function StyleBtn() {
   );
 }
 
-const DrawingStyle = ['None', 'Disney', 'Marvel', 'Sketch', 'Webtoon'];
+export const DrawingStyle = ['None', 'Disney', 'Marvel', 'Sketch', 'Webtoon'];
 export const InputStyle = [
   'none',
   'disney animation style',

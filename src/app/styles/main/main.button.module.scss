@@ -117,3 +117,21 @@
     }
   }
 }
+
+.searchBtn {
+  border-radius: 4px;
+  border: 2px solid $purple300;
+  display: flex;
+  align-items: center;
+  color: $white;
+  flex: 1;
+  margin-left: 16px;
+  justify-content: center;
+  background-color: $purple300;
+  font-size: 24px;
+  transition-duration: 0.3s;
+  &:active {
+    background-color: $purple400;
+    opacity: 0.8;
+  }
+}

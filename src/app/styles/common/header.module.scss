@@ -1,0 +1,31 @@
+.header {
+  width: 100%;
+  padding: 12px 0;
+  border-bottom: 2px solid $purple300;
+  .headerWrap {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 1024px;
+  }
+  img {
+    width: 120px;
+    cursor: pointer;
+  }
+  span {
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .option {
+    background-color: $purple200;
+    color: $white;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-right: 8px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
