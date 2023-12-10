@@ -20,6 +20,7 @@ export default function SearchInput() {
       value={image.prompt}
       onChange={(e) => onChange(e.target.value)}
       placeholder="A White Cute Cat"
+      className="focus:outline-none w-11/12 h-full"
     />
   );
 }

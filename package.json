@@ -21,7 +21,9 @@
     "openai": "^4.16.1",
     "react": "^18",
     "react-dom": "^18",
-    "styled-components": "^6.1.0"
+    "sass": "^1.69.5",
+    "styled-components": "^6.1.0",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^14.0.1",
@@ -37,6 +39,8 @@
     "lint-staged": "^15.0.2",
     "postcss": "^8",
     "prettier": "3.0.3",
+    "stylelint": "^16.0.1",
+    "stylelint-prettier": "^4.1.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   },

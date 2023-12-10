@@ -18,6 +18,7 @@ export const imageAtom = atomWithImmer<imageAtomType>({
   showSize: 1024,
   response_format: 'url',
   model: 3,
+  style: 'none',
 });
 
 interface imageAtomType {
@@ -28,6 +29,7 @@ interface imageAtomType {
   showSize: 1024 | 512 | 256;
   response_format: 'url';
   model: 2 | 3;
+  style: string;
 }
 
 export const remakeImageAtom = atomWithImmer<remakeImageType>({

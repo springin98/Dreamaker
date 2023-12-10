@@ -1,7 +1,9 @@
 import { useAtom } from 'jotai';
+import { useEffect } from 'react';
+
+import styles from '@/styles/main/main.button.module.scss';
 
 import { imageAtom } from '@/store/main/imageAtom';
-import { useEffect } from 'react';
 
 export default function SizeBtn() {
   const [image, setImage] = useAtom(imageAtom);
@@ -35,13 +37,36 @@ export default function SizeBtn() {
   };
 
   return (
-    <div>
+    <div className={styles.optionWrap}>
       <span>화질 선택</span>
-      <button onClick={() => onChangeSize(1024)}>1024x1024</button>
-      <button onClick={() => onChangeSize(512)} disabled={image.model === 3}>
+      <button
+        className={`${styles.btn} ${
+          image.size === '1024x1024' ? styles.activeBtn : styles.inactiveBtn
+        }`}
+        onClick={() => onChangeSize(1024)}
+      >
+        1024x1024
+      </button>
+      <button
+        className={`${styles.btn} ${
+          image.size === '512x512' ? styles.activeBtn : styles.inactiveBtn
+        }
+        ${image.model === 3 && styles.disabledBtn}
+        `}
+        onClick={() => onChangeSize(512)}
+        disabled={image.model === 3}
+      >
         512x512
       </button>
-      <button onClick={() => onChangeSize(256)} disabled={image.model === 3}>
+      <button
+        className={`${styles.btn} ${
+          image.size === '256x256' ? styles.activeBtn : styles.inactiveBtn
+        }
+              ${image.model === 3 && styles.disabledBtn}
+              `}
+        onClick={() => onChangeSize(256)}
+        disabled={image.model === 3}
+      >
         256x256
       </button>
     </div>

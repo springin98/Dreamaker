@@ -1,8 +1,8 @@
 'use client';
 import { Provider, useStore } from 'jotai';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import Body from '@/components/main/Body';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 export default function Home() {
   const myStore = useStore();

@@ -1,0 +1,119 @@
+// @import '@/styles/common/variables.module.scss';
+
+.modalBtn {
+  width: 0px;
+  height: 0px;
+  border-radius: 4px;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid $purple500;
+  &:hover,
+  &::after {
+    animation: bounce 0.5s infinite;
+  }
+  @keyframes bounce {
+    25% {
+      transform: translateY(4px);
+    }
+    75% {
+      transform: translateY(-4px);
+    }
+  }
+}
+.closeModalBtn {
+  border-top: none;
+  border-bottom: 12px solid $purple500;
+}
+
+.optionWrap {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  span {
+    margin-right: 8px;
+    min-width: 68px;
+  }
+  .btn {
+    background-color: $white;
+    margin-right: 8px;
+    padding: 6px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    &:last-child {
+      margin-right: 0px;
+    }
+    &:hover {
+      background-color: $white;
+    }
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 2px;
+      width: 0;
+      transition: 400ms ease all;
+    }
+    &:after {
+      right: inherit;
+      top: inherit;
+      left: 0;
+      bottom: 0;
+    }
+    &:hover:before,
+    &:hover:after {
+      width: 100%;
+      transition: 800ms ease all;
+    }
+  }
+  .activeBtn {
+    background-color: $purple200;
+    color: $white;
+    border-color: $purple200;
+    &:hover {
+      color: $purple200;
+    }
+    &:before,
+    &:after {
+      background: $purple200;
+    }
+  }
+  .inactiveBtn {
+    background-color: $gray100;
+    color: $white;
+    border-color: $gray100;
+    &:hover {
+      color: $gray100;
+    }
+    &:before,
+    &:after {
+      background: $gray100;
+    }
+  }
+  .disabledBtn {
+    display: none;
+  }
+  .numBtnWrap {
+    display: inline-flex;
+    align-items: center;
+    img {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+  }
+  input {
+    outline: none;
+    margin: 0 4px;
+    text-align: center;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    &[type='number'] {
+      -moz-appearance: textfield;
+    }
+  }
+}

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --foreground-rgb: 0, 0, 0;
 }
@@ -9,4 +13,7 @@
 }
 
 body {
+  padding: 0px;
+  margin: 0px;
+  color: #37112e;
 }

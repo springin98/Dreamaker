@@ -3,7 +3,12 @@ import Image from 'next/image';
 import VariationsBtn from '@/components/result/image/VariationsBtn';
 import DownloadBtn from '@/components/result/image/DownloadBtn';
 
-export default function Images({ created, img, showSize }: ImagesProps) {
+export default function Images({
+  prompt,
+  created,
+  img,
+  showSize,
+}: ImagesProps) {
   if (!img) return <></>;
 
   return (
@@ -16,7 +21,7 @@ export default function Images({ created, img, showSize }: ImagesProps) {
             width={showSize}
             height={showSize}
           />
-          <DownloadBtn url={data.url} created={created} />
+          <DownloadBtn prompt={prompt} url={data.url} created={created} />
           <VariationsBtn url={data.url} />
         </div>
       ))}
@@ -29,6 +34,7 @@ interface getImageType {
 }
 
 interface ImagesProps {
+  prompt: string;
   created: string;
   img: Array<getImageType>;
   showSize: 1024 | 512 | 256;

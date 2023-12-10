@@ -1,0 +1,42 @@
+.body {
+  background-color: $white;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+  .contentWrap {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 256px;
+    min-width: 1024px;
+    position: relative;
+  }
+  .logo {
+    margin-bottom: 48px;
+  }
+  .modalInputWrap {
+    width: 60%;
+  }
+  .searchWrap {
+    display: flex;
+    .searchInputWrap {
+      border-radius: 4px;
+      border: 2px solid $purple300;
+      height: 64px;
+      padding: 16px;
+      display: flex;
+      width: 80%;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  .modalWrap {
+    width: 60%;
+    position: absolute;
+    position: 10;
+  }
+}

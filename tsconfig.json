@@ -26,9 +26,9 @@
       "@/styles/*": ["./src/app/styles/*"],
       "@/types/*": ["./src/app/types/*"],
       "@/utils/*": ["./src/app/utils/*"],
-      "@/public/fonts/*": ["./fonts/*"],
-      "@/public/images/*": ["./images/*"],
-      "@/public/svgs/*": ["./svgs/*"]
+      "@/public/fonts/*": ["./public/fonts/*"],
+      "@/public/images/*": ["./public/images/*"],
+      "@/public/svgs/*": ["./public/svgs/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
